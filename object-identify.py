@@ -79,7 +79,8 @@ if __name__ == "__main__":
 		if len(objectInfo) > 0:
 			cv2.imwrite('test.jpg',img)
 		cv2.imshow("Output",img)
-		cv2.waitKey(1)
+		if cv2.waitKey(1) & 0xFF == ord('q'):
+			break
 
 	#clean up
 	#cap.stop();
