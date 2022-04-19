@@ -16,7 +16,7 @@ This derived code is licensed as the original examples under https://creativecom
 6. unzip Object_Detection_Files.zip
 
 # Run the code
-python3 object-identify.py --video (/dev/video0" | test.mp4 | test.jpg)
+python3 object-identify.py --video (/dev/video0 | test.mp4 | test.jpg)
 
 # Platforms
 Original example targeted Raspberry Pi. Targets for object-identify Debian based Linux.
