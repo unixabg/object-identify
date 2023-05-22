@@ -76,8 +76,9 @@ if __name__ == "__main__":
 		#Below provides a huge amount of controll. the 0.45 number is the threshold number, the 0.2 number is the nms number)
 		result, objectInfo = getObjects(img,0.45,0.2,objects=['person'])
 		#print(objectInfo)
+		timestr = time.strftime("%Y%m%d-%H%M%S")
 		if len(objectInfo) > 0:
-			cv2.imwrite('test.jpg',img)
+			cv2.imwrite(timestr+'test.jpg',img)
 		cv2.imshow("Output",img)
 		if cv2.waitKey(1) & 0xFF == ord('q'):
 			break
