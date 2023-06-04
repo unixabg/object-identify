@@ -52,6 +52,7 @@ if __name__ == "__main__":
 	# construct the argument parser and parse the arguments
 	ap = argparse.ArgumentParser()
 	ap.add_argument("-v", "--video", help="path to the video file")
+	ap.add_argument("--preview", action="store_true", help="show preview window")
 	args = vars(ap.parse_args())
 
 	if args["video"] is None:
@@ -79,9 +80,11 @@ if __name__ == "__main__":
 		timestr = time.strftime("%Y%m%d-%H%M%S")
 		if len(objectInfo) > 0:
 			cv2.imwrite(timestr+'test.jpg',img)
-		cv2.imshow("Output",img)
-		if cv2.waitKey(1) & 0xFF == ord('q'):
-			break
+
+		if args["preview"]:
+			cv2.imshow("Output",img)
+			if cv2.waitKey(1) & 0xFF == ord('q'):
+				break
 
 	#clean up
 	#cap.stop();
