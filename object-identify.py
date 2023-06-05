@@ -53,6 +53,7 @@ if __name__ == "__main__":
 	ap = argparse.ArgumentParser()
 	ap.add_argument("-v", "--video", help="path to the video file")
 	ap.add_argument("--preview", action="store_true", help="show preview window")
+	ap.add_argument("--threshold", type=float, default=0.45, help="set detection threshold")
 	args = vars(ap.parse_args())
 
 	if args["video"] is None:
@@ -61,6 +62,15 @@ if __name__ == "__main__":
 		print(" --video test.mp4");
 		print(" --video test.jpg");
 		sys.exit()
+
+	# set the detection confidence threshold
+	threshold = args["threshold"]
+	if threshold > 0.95:
+		print("Input threshold set to high, lowering to 0.85")
+		threshold = 0.85
+	elif threshold < 0.4:
+		print("Input threshold set to low, increasing to 0.4")
+		threshold = 0.4
 
 	cap = cv2.VideoCapture(args["video"])
 	cap.set(3,640)
@@ -74,8 +84,8 @@ if __name__ == "__main__":
 		if img is None:
 			break
 
-		#Below provides a huge amount of controll. the 0.45 number is the threshold number, the 0.2 number is the nms number)
-		result, objectInfo = getObjects(img,0.45,0.2,objects=['person'])
+		#Below provides a huge amount of controll. the detection threshold number, the 0.2 number is the nms number)
+		result, objectInfo = getObjects(img,threshold,0.2,objects=['person'])
 		#print(objectInfo)
 		timestr = time.strftime("%Y%m%d-%H%M%S")
 		if len(objectInfo) > 0:
