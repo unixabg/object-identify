@@ -71,6 +71,8 @@ if __name__ == "__main__":
 	elif threshold < 0.3:
 		print("Input threshold set to low, increasing to 0.3")
 		threshold = 0.3
+	else:
+		print("Input threshold is set at "+str(threshold))
 
 	cap = cv2.VideoCapture(args["video"])
 	cap.set(3,640)
