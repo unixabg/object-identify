@@ -65,12 +65,12 @@ if __name__ == "__main__":
 
 	# set the detection confidence threshold
 	threshold = args["threshold"]
-	if threshold > 0.95:
+	if threshold > 0.85:
 		print("Input threshold set to high, lowering to 0.85")
 		threshold = 0.85
-	elif threshold < 0.4:
-		print("Input threshold set to low, increasing to 0.4")
-		threshold = 0.4
+	elif threshold < 0.3:
+		print("Input threshold set to low, increasing to 0.3")
+		threshold = 0.3
 
 	cap = cv2.VideoCapture(args["video"])
 	cap.set(3,640)
